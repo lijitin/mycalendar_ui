@@ -1,0 +1,52 @@
+html{
+  font-size: 16px;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: grey;
+  color: #454545;
+}
+/* global presets */
+header{
+  height: 5rem;
+}
+
+.main{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login{
+  background-color: white;
+  width: 317px;
+  border: 2px;
+  border-style: dashed;
+  border-color: blanchedalmond;
+
+}
+
+.banner{
+  height: 5rem;
+  width: 285px;
+  margin: 1rem;
+  background-color: darksalmon;
+}
+
+.banner h1{
+  padding: 1rem;
+  font-size: 3rem;
+  color: white;
+}
+
+form{
+  margin: 1rem;
+}
+
+form div{
+  margin: 0.5rem 0;
+}
+input{
+  width: 281px;
+}
+.button input{
+  width: 285px;
+}

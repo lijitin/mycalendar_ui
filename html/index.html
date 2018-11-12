@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyCalendar</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/index_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div>
+        <div id="logo">
+          <span>MYCALENDAR</span>
+          <form action="/">
+            <!-- placeholder for php or js, currently uses html anchors to get back to login page. -->
+            <a href="./login.html"><input id="logout" type="button" value="Logout"></a>
+          </form>
+      </div>
+    </header>
+    <div class="main-body">
+      <div class="top">
+        <div class="column1">
+          <div class="option-box">
+            <form action="/">
+               <!-- placeholder for php or js -->
+              <input id="meeting-btn" type="button" value="Arrange Meeting">
+              <input id="message-btn" type="button" value="Send Messages">
+            </form>
+          </div>
+          <div class="message-box">
+            <div class="title">
+              <h1>New Messages</h1>
+            </div>
+            <div class="message">
+              <!-- Messages goes in each unsorted list -->
+              <ul><span>msg1</span></ul>
+              <ul><span>msg2</span></ul>
+              <ul><span>msg3</span></ul>
+              <ul><span>msg4</span></ul>
+            </div>
+          </div>
+        </div>
+        <div class="column2">
+          <div class="calendar">
+            <!-- time starts from 0600 to 0000-->
+            <table id="cal">
+              <tr id="labelrow">
+                <th></th>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+              <tr class="even time6">
+                <td>0600</td>
+                <td class="day0"></td>
+                <td class="day1"></td>
+                <td class="day2"></td>
+                <td class="day3"></td>
+                <td class="day4"></td>
+                <td class="day5"></td>
+                <td class="day6"></td>
+              </tr>
+              <tr class="odd time7">
+                <td>0700</td>
+                <td class="day0"></td>
+                <td class="day1"></td>
+                <td class="day2"></td>
+                <td class="day3"></td>
+                <td class="day4"></td>
+                <td class="day5"></td>
+                <td class="day6"></td>
+              </tr>
+              <tr>
+                <td>0800</td>
+              </tr>
+              <tr>
+                <td>0900</td>
+              </tr>
+              <tr>
+                <td>1000</td>
+              </tr>
+              <tr>
+                <td>1100</td>
+              </tr>
+              <tr>
+                <td>1200</td>
+              </tr>
+              <tr>
+                <td>1300</td>
+              </tr>
+              <tr>
+                <td>1400</td>
+              </tr>
+              <tr>
+                <td>1500</td>
+              </tr>
+              <tr>
+                <td>1600</td>
+              </tr>
+              <tr>
+                <td>1700</td>
+              </tr>
+              <tr>
+                <td>1800</td>
+              </tr>
+              <tr>
+                <td>1900</td>
+              </tr>
+              <tr>
+                <td>2000</td>
+              </tr>
+              <tr>
+                <td>2100</td>
+              </tr>
+              <tr>
+                <td>2200</td>
+              </tr>
+              <tr>
+                <td>2300</td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <h1>Events!</h1>
+        <div class="announcements">
+          <!-- fetch announcements and put it here -->
+          <div class="event1">
+            <h2>EventTitle1</h2>
+            <a href="#">"Seminar - Mastering 4D chess"</a>
+          </div>
+          <div class="event2">
+            <h2>EventTitle2</h2>
+            <a href="#">"Workshop - Preparation for Street Cleaning Day"</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer">
+      <span>&copy;All rights reserved</span>
+    </div>
+
+
+    <!-- meeting modal, for arranging meetings-->
+    <div id="arrangeMeeting" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <form>
+          <div class="top">
+            <h1>Meeting Arrangement Form</h1>
+          </div>
+          <div class="mid">
+            <div>
+              <span>Who's invited?</span>
+              <input type="text"><br>
+            </div>
+            <div>
+              <span>Date of meeting?</span>
+              <select name="day" size="7" id="selectedDay">
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+                <option value="2">Tueday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+              </select><br>
+            </div>
+            <div>
+              <span>Time: starts from</span>
+              <select class="timeoptions" name="time1" size="5" id="selectedTime1">
+                  <option value="6">0600</option>
+                  <option value="7">0700</option>
+                  <option value="8">0800</option>
+                  <option value="9">0900</option>
+              </select>
+              <span>to</span>
+              <select class="timeoptions" name="time2" size="5" id="selectedTime2">
+              </select>
+            </div>
+          </div>
+          <div class="bottom">
+            <div><span id="meeting-errmsg"></span></div>
+            <input type="button" class="cancel" id="meetingCancel-btn" value="cancel">
+            <input type="button" class="submit" id="meetingSubmit-btn" value="submit">
+          </div>
+        </form>
+        
+
+      </div>
+    </div>
+
+
+    
+    <div class="test">
+      <p id="debug">default</p>
+      <button type="button" onclick="cleanCalendar()">cleanCalendar</button>
+      <button type="button" onclick="selectCells(3, 7, 12, 'pink')">setslot</button>
+    </div>
+
+    <script src="../js/index.js"></script>
+  </body>
+</html>
