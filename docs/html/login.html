@@ -1,11 +1,15 @@
 <!DOCTYPE html>
+
+
+
 <html>
   <head>
-    <title>MyCalendar</title>
+  <title>MyCalendar</title>
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/login_style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
   </head>
+  
   <body>
     <header>
       <nav>
@@ -20,17 +24,17 @@
           <!-- Banner -->
           <h1>My Calendar</h1>
         </div>
-        <form action="/">
+        <form method= "post" action="loginpage.php">
           <div class="username">
             <p>Username:</p>
-            <input type="text" name="UserName" value="{SampleUsername1}">
+            <input type="text" name="username" value="{SampleUsername1}" required>
           </div>
           <div class="password">
             <p>Password:</p>
-            <input type="password" name="UserName" value="{samplePSW}">
+            <input type="password" name="password" value="{samplePSW}"  required >
           </div>
           <div class="button">
-            <a href="./index.html"><input type="button" value="Login" id="login-btn"></a>
+            <input type="submit" value="Login" id="login-btn">
           </div>
         </form>
       </div>
@@ -38,5 +42,9 @@
     <div class="footer">
       <span></span>
     </div>
+
+    
+
+
   </body>
 </html>

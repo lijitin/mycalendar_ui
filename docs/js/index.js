@@ -1,26 +1,52 @@
 
 cleanCalendar();
-addOptions();
+addOptions(); // adding options in the meeting modal form
 // dayOfWeek, lowTime, highTime, timeSlot are all INTEGERS.
 // dayOfWeek: int, range[0-6] (0 - Sunday, 1 - Monday, etc...)
 // lowTime, highTime, timeSlot: int, range[6-23] (6 - the timeslot from morning 6am to 7am, 7 - 7am to 8am, 23 - 11pm-00am)
 
+function createMessage(username, index){    
+    // create a message on the message box
+    // takes in a username and index
+    // the approve & decline buttons have ids of "approve-btn1" & "decline-btn1" etc
+    var id = "message" + index;
+    var msgDiv = document.getElementById(id);
+    var element = "";
+    element = "<form> <p>Meeting - " + username + "!</p>";
+    element = element + "<input type=\"button\" class=\"approve\" id=\"approve-btn" + index + 
+    "\" value=\"approve\"></input> <input type=\"button\" class=\"decline\" id=\"decline-btn" + index + "\" value=\"decline\"></form>";
+    msgDiv.innerHTML = element;
+}
 
-// interactions with buttons
-var meetingModal = document.getElementById("arrangeMeeting");
-var meetingButton = document.getElementById("meeting-btn");
-var exitbtn = document.getElementById("meetingCancel-btn");
+// message modal form button interactions
+var messageModal = document.getElementById("sendMessageModal");
+var messageBtn = document.getElementById("message-btn");
+var messageExitBtn = document.getElementById("messageCancel-btn");
+messageBtn.onclick = function(){
+    messageModal.style.display = "block";
+    document.getElementById("message-errmsg").style.display = "none";
+}
+messageExitBtn.onclick = function(){
+    messageModal.style.display = "none";
+}
 
-meetingButton.onclick = function(){
+// meeting modal form button interactions
+var meetingModal = document.getElementById("arrangeMeetingModal");
+var meetingBtn = document.getElementById("meeting-btn");
+var meetingExitBtn = document.getElementById("meetingCancel-btn");
+
+meetingBtn.onclick = function(){
     meetingModal.style.display = "block";
     document.getElementById("meeting-errmsg").style.display = "none";
 }
-exitbtn.onclick = function(){
+meetingExitBtn.onclick = function(){
     meetingModal.style.display = "none";
 }
 window.onclick = function(event) {
     if (event.target == meetingModal) {
         meetingModal.style.display = "none";
+    }else if(event.target == messageModal) {
+        messageModal.style.display = "none";
     }
 }
 
@@ -43,7 +69,7 @@ meetingSubmitBtn.onclick = function(){
 
     selectCells(day, time1, time2, "pink");
     
-    exitbtn.onclick();
+    meetingExitBtn.onclick();
 
 }
 // selecting a range of calendar cells

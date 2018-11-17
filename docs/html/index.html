@@ -22,7 +22,7 @@
         <div class="column1">
           <div class="option-box">
             <form action="/">
-               <!-- placeholder for php or js -->
+               <!-- these option-box buttons opens up modal forms -->
               <input id="meeting-btn" type="button" value="Arrange Meeting">
               <input id="message-btn" type="button" value="Send Messages">
             </form>
@@ -31,12 +31,21 @@
             <div class="title">
               <h1>New Messages</h1>
             </div>
-            <div class="message">
+            <div id="message">
               <!-- Messages goes in each unsorted list -->
-              <ul><span>msg1</span></ul>
-              <ul><span>msg2</span></ul>
-              <ul><span>msg3</span></ul>
-              <ul><span>msg4</span></ul>
+              <div id="message1">
+                <form>
+                  <p>Meeting - {username}!</p>
+                  <input type="button" class="approve" id="approve-btn1" value="approve">
+                  <input type="button" class="decline" id="decline-btn1" value="decline">
+                </form>
+              </div>
+              <div id="message2">
+
+              </div>
+              <div id="message3">
+
+              </div>
             </div>
           </div>
         </div>
@@ -148,8 +157,9 @@
     </div>
 
 
-    <!-- meeting modal, for arranging meetings-->
-    <div id="arrangeMeeting" class="modal">
+    <!-- meeting modal form, for arranging meetings -->
+    <!-- link with php or something else to connect to database (i guess) -->
+    <div id="arrangeMeetingModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
         <form>
@@ -195,6 +205,31 @@
         
 
       </div>
+    </div>
+
+    <div id="sendMessageModal" class="modal">
+      <div class="modal-content">
+        <form>
+          <div class="top">
+            <h1>Message Sending Form</h1>
+          </div>
+          <div class="mid">
+            <div>
+              <span>Recipient:</span>
+              <input type="text"><br>
+            </div>
+            <div>
+              <span>Message Content:</span>
+              <textarea>Testing message</textarea>
+            </div>
+          </div>
+          <div class="bottom">
+            <div><span id="message-errmsg"></span></div>
+            <input type="button" class="cancel" id="messageCancel-btn" value="cancel">
+            <input type="button" class="submit" id="messageSubmit-btn" value="submit">
+          </div>
+        </form>
+        </div>
     </div>
 
 
