@@ -58,7 +58,7 @@ meetingSubmitBtn.onclick = function(){
     var day = parseInt(document.getElementById("selectedDay").value);
     var time1= parseInt(document.getElementById("selectedTime1").value);
     var time2 = parseInt(document.getElementById("selectedTime2").value);
-    console.log(day, time1, time2);
+    // console.log(day, time1, time2);
     if(isNaN(day) || isNaN(time1) || isNaN(time2)){
         // insufficient user inputs
         console.log("Insufficient user inputs");
@@ -78,7 +78,7 @@ function selectCells(dayOfWeek, lowTime, highTime, color){
     var currTime = highTime;
     // keep on selecting from highTime until reaches the lowTime
     while(currTime > lowTime){
-        console.log(currTime);
+        // console.log(currTime);
         changeCell(dayOfWeek, currTime, color);
         currTime = currTime - 1;
     }

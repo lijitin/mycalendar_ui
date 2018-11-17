@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
   </head>
   <body>
+    <?php
+      include "loadInfo.php";
+    ?>
     <header>
       <div>
         <div id="logo">
@@ -33,17 +36,17 @@
             </div>
             <div id="message">
               <!-- Messages goes in each unsorted list -->
-              <div id="message1">
+              <div id="message0">
                 <form>
                   <p>Meeting - {username}!</p>
-                  <input type="button" class="approve" id="approve-btn1" value="approve">
-                  <input type="button" class="decline" id="decline-btn1" value="decline">
+                  <input type="button" class="approve" id="approve-btn0" value="approve">
+                  <input type="button" class="decline" id="decline-btn0" value="decline">
                 </form>
               </div>
-              <div id="message2">
+              <div id="message1">
 
               </div>
-              <div id="message3">
+              <div id="message2">
 
               </div>
             </div>
@@ -162,18 +165,18 @@
     <div id="arrangeMeetingModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <form>
+        <form action="./arrangeMeeting.php" method="GET">
           <div class="top">
             <h1>Meeting Arrangement Form</h1>
           </div>
           <div class="mid">
             <div>
               <span>Who's invited?</span>
-              <input type="text"><br>
+              <input type="text" name="invitedUser"><br>
             </div>
             <div>
               <span>Date of meeting?</span>
-              <select name="day" size="7" id="selectedDay">
+              <select size="7" id="selectedDay" name="day">
                 <option value="0">Sunday</option>
                 <option value="1">Monday</option>
                 <option value="2">Tueday</option>
@@ -185,21 +188,21 @@
             </div>
             <div>
               <span>Time: starts from</span>
-              <select class="timeoptions" name="time1" size="5" id="selectedTime1">
+              <select class="timeoptions" size="5" id="selectedTime1" name="startTime">
                   <option value="6">0600</option>
                   <option value="7">0700</option>
                   <option value="8">0800</option>
                   <option value="9">0900</option>
               </select>
               <span>to</span>
-              <select class="timeoptions" name="time2" size="5" id="selectedTime2">
+              <select class="timeoptions" size="5" id="selectedTime2" name="endTime">
               </select>
             </div>
           </div>
           <div class="bottom">
             <div><span id="meeting-errmsg"></span></div>
             <input type="button" class="cancel" id="meetingCancel-btn" value="cancel">
-            <input type="button" class="submit" id="meetingSubmit-btn" value="submit">
+            <input type="submit" class="submit" id="meetingSubmit-btn" value="submit">
           </div>
         </form>
         
@@ -239,7 +242,30 @@
       <button type="button" onclick="cleanCalendar()">cleanCalendar</button>
       <button type="button" onclick="selectCells(3, 7, 12, 'pink')">setslot</button>
     </div>
-
     <script src="../js/index.js"></script>
+    <script type="text/javascript">
+    // a js section which updates the calendar and messagebox according to the database
+      var events = <?php echo json_encode($events) ?>; // put the database info into a js object
+      var color = "cyan";
+      if(events !== "NULL"){
+          events.forEach(function(event){ // use a forEach loop to read and set each events
+          var day, startTime, endTime;
+          day = parseInt(event['day']);
+          startTime = parseInt(event['startTime']);
+          endTime = parseInt(event['endTime']);
+          selectCells(day, startTime, endTime, color);
+        });
+      }
+      var messages = <?php echo json_encode($messages) ?>;
+      if(messages !== "NULL"){
+        // only display the first 3 invitations
+        var i;
+        for(i = 0; i<3 && messages[i]!= undefined; i++){
+          var inviter = messages[i]["sender_username"];
+          createMessage(inviter, i);
+        }
+      }
+    </script>
+
   </body>
 </html>

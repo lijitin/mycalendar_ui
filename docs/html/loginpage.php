@@ -4,17 +4,13 @@
     //starting a session
     session_start();
 
-    echo '<script language="javascript">';
-    echo 'alert("correct.")';
-    echo '</script>';
-
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $dbusername = "root";
+    $dbpassword = "";
     $dbname = "mycalendar";
 
     //Creating connection with database.
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
     //Checking the connectivity with the database.
     if ($conn->connect_error) {
@@ -23,37 +19,30 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
-        $password = $_POST["password"];	
+        $pw = $_POST["password"];	
     }
 
-    $query = "SELECT username, password FROM login_page where username="+ $username+ ", password="+$password+"";
+    $query = "SELECT username, pw FROM loginInfo WHERE username='".$username."' AND pw='".$pw."'";
 
     $sql = $query;
-
-    
 
     //Executing the query
 
     $result = $conn->query($sql);
 
 
-    if($result->num_rows >= 1){
-
-                    $_SESSION["username"] = $username;
-
-                    header('Location: /index.php');
-
+    if($result->num_rows >= 1){ // query matched one or more
+        $_SESSION["username"] = $username;  // keep track of the username
+        header('Location: /cs487/mycalendar_ui/docs/html/index.php');
+    } else{
+        echo '<script language="javascript">';
+        echo 'alert("Invalid username or Password.")';
+        echo '</script>';
     }
+    echo "SQL Query: ".$query;
 
-    else{
+    $conn->close();
 
-                    echo '<script language="javascript">';
-
-                    echo 'alert("Invalid username or Password.")';
-
-                    echo '</script>';
-
-    }
 ?>
 </body>
 </html>
