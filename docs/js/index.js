@@ -5,16 +5,19 @@ addOptions(); // adding options in the meeting modal form
 // dayOfWeek: int, range[0-6] (0 - Sunday, 1 - Monday, etc...)
 // lowTime, highTime, timeSlot: int, range[6-23] (6 - the timeslot from morning 6am to 7am, 7 - 7am to 8am, 23 - 11pm-00am)
 
-function createMessage(username, index){    
+function createMessage(username, index, event_id){    
     // create a message on the message box
     // takes in a username and index
     // the approve & decline buttons have ids of "approve-btn1" & "decline-btn1" etc
     var id = "message" + index;
     var msgDiv = document.getElementById(id);
     var element = "";
-    element = "<form> <p>Meeting - " + username + "!</p>";
-    element = element + "<input type=\"button\" class=\"approve\" id=\"approve-btn" + index + 
-    "\" value=\"approve\"></input> <input type=\"button\" class=\"decline\" id=\"decline-btn" + index + "\" value=\"decline\"></form>";
+    element = "<form action=\"./confirmMeeting.php\" method=\"GET\">";
+    element = element + "<input type=\"hidden\" value=\"" + event_id + "\" name=\"event_id\">";
+    element = element + "<p>Meeting - " + username + "!</p>";
+    element = element + "<input type=\"submit\" class=\"approve\" id=\"approve-btn" + index + 
+    "\" value=\"approve\"></input> <input type=\"submit\" class=\"decline\" id=\"decline-btn" + index + "\" value=\"decline\"></form>";
+    console.log(element);
     msgDiv.innerHTML = element;
 }
 

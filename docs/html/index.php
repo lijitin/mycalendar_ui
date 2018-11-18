@@ -37,10 +37,11 @@
             <div id="message">
               <!-- Messages goes in each unsorted list -->
               <div id="message0">
-                <form>
+                <form action="./confirmMeeting.php" method="GET">
                   <p>Meeting - {username}!</p>
-                  <input type="button" class="approve" id="approve-btn0" value="approve">
-                  <input type="button" class="decline" id="decline-btn0" value="decline">
+                  <input type="hidden" value="foo" name="event_id">
+                  <input type="submit" class="approve" id="approve-btn0" value="approve">
+                  <input type="submit" class="decline" id="decline-btn0" value="decline">
                 </form>
               </div>
               <div id="message1">
@@ -262,7 +263,8 @@
         var i;
         for(i = 0; i<3 && messages[i]!= undefined; i++){
           var inviter = messages[i]["sender_username"];
-          createMessage(inviter, i);
+          var event_id = messages[i]["event_id"];
+          createMessage(inviter, i, event_id);
         }
       }
     </script>

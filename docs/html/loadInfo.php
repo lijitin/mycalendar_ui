@@ -4,6 +4,7 @@
     session_start();
 
     $username = $_SESSION["username"]; // the current session username
+    echo "<p>current user: ".$username."</p>";  // for debugging purpose, shows current user in a p-tag
 
     // connect to the database at localhost
     $servername = "localhost";
@@ -28,7 +29,7 @@
             $events[] = $row;
         }
     } else {
-        echo "0 results";
+        echo "<p>0 outward meetings</p>";
     }
 
     // query for recieved messages
@@ -41,7 +42,7 @@
             $messages[] = $row;
         }
     }else {
-        echo "0 results";
+        echo "<p>0 inward meetings</p>";
     }
     if(empty($events)){
         $events = "NULL";
@@ -49,7 +50,6 @@
     if(empty($messages)){
         $messages = "NULL";
     }
-    echo $username;
     $conn->close();
 
     // pass the variables to javascript, and run the selectCells function.
