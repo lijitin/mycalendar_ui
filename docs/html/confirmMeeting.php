@@ -1,4 +1,8 @@
 <?php
+    // How to confirm?
+    // query the events table with the event id
+    // separate the row into two rows, with nulls as reciever_usernames
+
 
     session_start();
     // get the event id from the form

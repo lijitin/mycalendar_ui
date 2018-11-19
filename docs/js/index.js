@@ -1,6 +1,6 @@
 
 cleanCalendar();
-addOptions(); // adding options in the meeting modal form
+addOptions(); // adding time options in the meeting modal form
 // dayOfWeek, lowTime, highTime, timeSlot are all INTEGERS.
 // dayOfWeek: int, range[0-6] (0 - Sunday, 1 - Monday, etc...)
 // lowTime, highTime, timeSlot: int, range[6-23] (6 - the timeslot from morning 6am to 7am, 7 - 7am to 8am, 23 - 11pm-00am)
