@@ -1,5 +1,5 @@
 html{
-  font-size: 16px;
+  font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
   background-color: #E6E6E6;
   color: #454545;
@@ -28,7 +28,7 @@ header input{
 div.top{
   display: flex;
   margin: 0 auto 1rem auto;
-  width: 800px;
+  width: 1000px;
 }
 div.column1{
   margin-right: 1rem;
@@ -193,6 +193,11 @@ form div.mid{
   align-items: center;
   justify-content: flex-end;
 }
+#description{
+  width: 100%;
+  height: 2rem;
+}
+
 /* cancel and subimt button */
 .modal-content input.cancel, .modal-content input.submit{
   border-style: solid;
@@ -250,7 +255,7 @@ input.submit:hover, input.submit:hover{
   padding: 5px;
   border: 1px solid #888;
   border-radius: 10px;
-  width: 500px;
+  width: 650px;
 }
 
 /* The Close Button */
