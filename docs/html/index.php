@@ -140,21 +140,52 @@
           </div>
         </div>
       </div>
-      <div class="bottom">
-        <h1>Events!</h1>
-        <div class="announcements">
-          <!-- fetch announcements and put it here -->
-          <div class="event1">
-            <h2>EventTitle1</h2>
-            <a href="#">"Seminar - Mastering 4D chess"</a>
-          </div>
-          <div class="event2">
-            <h2>EventTitle2</h2>
-            <a href="#">"Workshop - Preparation for Street Cleaning Day"</a>
-          </div>
-        </div>
+      
+      <?php	  
+        
+        
+        // connect to the database
+        $servername = "localhost";
+        $dbusername = "root";
+        $dbpassword = "";
+        $dbname = "mycalendar";
 
-      </div>
+        // Creating connection with database.
+        $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+
+        // Checking the connectivity with the database.
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        // query for the row with the event_id
+        $query = "SELECT * FROM dept_events";
+        // this should only return one row
+        // extract the info
+        $result = $conn->query($query);
+      $events;
+        
+
+      if ($result->num_rows > 0) {
+        echo "<div class='bottom'>";
+        echo"<h1 text-color='blue'>Events!!</h1>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+          
+          echo"<div class='announcements'>";
+          echo"<div class='event1'>";
+          echo"<marquee>";
+          echo"<a href = '#' color='blue'>";
+          echo$row['event_details'];
+          echo "</a>";
+          echo"</marquee>";
+          echo"</div>";
+          echo"</div>";
+            }
+        echo"</div>";
+        }
+
+      ?>
+
     </div>
     <div class="footer">
       <span>&copy;All rights reserved</span>

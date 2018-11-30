@@ -38,8 +38,13 @@
         echo '<script language="javascript">';
         echo 'alert("Invalid username or Password.")';
         echo '</script>';
+        // redirect to login page
+        echo '<script language="javascript">';
+        echo 'window.location.replace("./login.html");';
+        echo'</script>';
     }
     echo "SQL Query: ".$query;
+
 
     $conn->close();
 
