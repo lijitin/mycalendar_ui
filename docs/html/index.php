@@ -230,6 +230,10 @@
               <select class="timeoptions" size="5" id="selectedTime2" name="endTime">
               </select>
             </div>
+            <div>
+              <span>Description</span>
+              <textarea id="description">description of the meeting</textarea>
+            </div>
           </div>
           <div class="bottom">
             <div><span id="meeting-errmsg"></span></div>
